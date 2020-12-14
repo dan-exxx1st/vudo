@@ -1,0 +1,62 @@
+<template>
+  <div class="todo-folder">
+    <div class="todo-folder__description">
+      <div class="todo-folder__description__color"></div>
+      <span class="todo-folder__description__text">Фронтенд</span>
+    </div>
+    <button class="todo-folder__delete-btn"></button>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss">
+.todo-folder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 160px;
+  padding: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+
+  &__description {
+    display: flex;
+    align-items: center;
+    &__color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #64c4ed;
+    }
+
+    &__text {
+      margin-left: 10px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 16px;
+      letter-spacing: 0.15px;
+
+      color: var(--color-black);
+    }
+  }
+
+  &__delete-btn {
+    width: 15px;
+    height: 15px;
+
+    background: url('../assets/icons/close-grey.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+  }
+}
+</style>

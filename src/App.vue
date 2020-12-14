@@ -7,7 +7,9 @@
   --color-white: #fafafa;
   --color-black: #0a0a0a;
   --color-light-green: #4dd599;
-  --color-grey: #e8e8e8;
+  --color-light-grey: #e8e8e8;
+  --color-grey: #b4b4b4;
+  --color-dark-grey: #767676;
 }
 
 * {
