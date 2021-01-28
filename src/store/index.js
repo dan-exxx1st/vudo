@@ -1,8 +1,18 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
+  state: {
+    folders: []
+  },
+  mutations: {
+    setDialogs(state, payload) {
+      state.folders = payload.folders;
+    }
+  },
+  actions: {
+    setDialogs({ commit }, folders) {
+      commit('setDialogs', folders);
+    }
+  },
   modules: {}
 });

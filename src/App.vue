@@ -2,17 +2,12 @@
   <router-view />
 </template>
 
-<style>
-:root {
-  --color-white: #fafafa;
-  --color-black: #0a0a0a;
-  --color-light-green: #4dd599;
-  --color-light-grey: #e8e8e8;
-  --color-grey: #b4b4b4;
-  --color-dark-grey: #767676;
-}
-
-* {
-  font-family: 'Roboto', sans-serif;
-}
-</style>
+<script>
+import { Api } from '@/api/';
+const api = new Api();
+export default {
+  provide: {
+    api
+  }
+};
+</script>
