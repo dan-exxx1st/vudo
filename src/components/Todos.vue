@@ -5,19 +5,28 @@
       <img :src="pencil" alt="edit" />
     </div>
     <div class="todos__line"></div>
-    <TodoItem v-for="todo in todos" :key="todo.id" :text="todo.text" />
-    <div class="todos__add">
-      <img :src="add" alt="Add" />
-      <span>Новая задача</span>
-    </div>
+    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <Button
+      v-if="!addTodo"
+      icon
+      text="Новая задача"
+      @click="handleAddTodoOpen"
+    />
+    <AddTodo
+      v-else
+      :cancel="handleAddTodoOpen"
+      :folderId="folder.id"
+      :addNewTodo="addNewTodo"
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import TodoItem from './TodoItem';
+import Button from './Button';
+import AddTodo from './AddTodo';
 import PencilIcon from '@/assets/icons/pencil.svg';
-import AddIcon from '@/assets/icons/add.svg';
 
 export default {
   async created() {
@@ -27,9 +36,17 @@ export default {
   data() {
     return {
       pencil: PencilIcon,
-      add: AddIcon,
-      todos: []
+      todos: [],
+      addTodo: false
     };
+  },
+  methods: {
+    handleAddTodoOpen() {
+      this.addTodo = !this.addTodo;
+    },
+    addNewTodo(todo) {
+      this.todos.push(todo);
+    }
   },
   props: {
     folderId: {
@@ -44,7 +61,9 @@ export default {
   },
   inject: ['api'],
   components: {
-    TodoItem
+    TodoItem,
+    Button,
+    AddTodo
   }
 };
 </script>

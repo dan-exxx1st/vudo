@@ -1,6 +1,6 @@
 <template>
   <div class="todo-item">
-    <CheckBox :text="text" />
+    <CheckBox @click="updateTodoChecked" :text="todo.text" :checked="isDone" />
     <img class="todo-item__close" :src="closeIcon" alt="close" />
   </div>
 </template>
@@ -12,15 +12,30 @@ import CloseIcon from '@/assets/icons/close-grey.svg';
 export default {
   components: { CheckBox },
   props: {
-    text: {
-      type: String,
-      default: ''
+    todo: {
+      type: Object,
+      default() {
+        return {};
+      }
     }
   },
   data() {
     return {
-      closeIcon: CloseIcon
+      closeIcon: CloseIcon,
+      isDone: this.todo.done
     };
-  }
+  },
+  methods: {
+    async updateTodoChecked(props) {
+      const newIsDone = !props.checked;
+      this.isDone = newIsDone;
+      const payload = {
+        todoId: this.todo.id,
+        done: newIsDone
+      };
+      await this.api.updateTodoDone(payload);
+    }
+  },
+  inject: ['api']
 };
 </script>

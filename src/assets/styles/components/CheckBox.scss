@@ -10,7 +10,7 @@
   &__input {
     display: none;
 
-    &:checked ~ span {
+    &.checked ~ span {
       background: var(--color-light-green);
       border-color: var(--color-light-green);
       & > svg {
@@ -42,10 +42,12 @@
     font-size: 16px;
     line-height: 19px;
 
-    user-select: none;
-
     margin-left: 15px;
 
     color: var(--color-black);
+
+    &.checked {
+      text-decoration: line-through;
+    }
   }
 }

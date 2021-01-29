@@ -1,7 +1,11 @@
 <template>
   <div class="checkbox-wrapper">
     <label class="checkbox">
-      <input class="checkbox__input" type="checkbox" value="checked" />
+      <input
+        class="checkbox__input"
+        type="checkbox"
+        :class="{ checked: checked }"
+      />
       <span class="checkbox__span" @click="onCheck()">
         <svg viewBox="0 -46 417.81333 417" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -10,29 +14,25 @@
         </svg>
       </span>
     </label>
-    <p class="checkbox__text">{{ text }}</p>
+    <p class="checkbox__text" :class="{ checked: checked }">{{ text }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  emits: ['changeChecked'],
+  emits: ['click'],
   props: {
     text: {
       type: String
+    },
+    checked: {
+      type: Boolean
     }
-  },
-
-  data() {
-    return {
-      checked: false
-    };
   },
 
   methods: {
     onCheck() {
-      this.checked = !this.checked;
-      this.$emit('changeChecked', {
+      this.$emit('click', {
         text: this.$props.text,
         checked: this.checked
       });

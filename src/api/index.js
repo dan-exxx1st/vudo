@@ -17,4 +17,16 @@ export class Api {
 
     return response.data.todos;
   }
+
+  async createTodo(payload) {
+    const response = await this.client.post('/todo', payload);
+    const newTodo = response.data.todo;
+    return newTodo;
+  }
+
+  async updateTodoDone(payload) {
+    const response = await this.client.put('/todo', payload);
+    const updatedTodo = response.data.todo;
+    return updatedTodo;
+  }
 }

@@ -5,12 +5,13 @@
 @import './views/Home.scss';
 
 /* Import components styles */
-@import './components/AddButton.scss';
+@import './components/Button.scss';
 @import './components/CheckBox.scss';
 @import './components/FolderItem.scss';
 @import './components/TodoItem.scss';
 @import './components/Folders.scss';
 @import './components/Todos.scss';
+@import './components/AddTodo.scss';
 
 /* Global css variables */
 :root {

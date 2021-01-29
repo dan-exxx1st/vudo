@@ -33,9 +33,6 @@ export default {
     Todos
   },
   methods: {
-    onChecked({ text }) {
-      console.log(text);
-    },
     ...mapActions(['setDialogs'])
   },
   computed: {
