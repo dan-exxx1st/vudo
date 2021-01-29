@@ -4,6 +4,7 @@
   justify-content: space-between;
   max-width: 470px;
   padding: 10px 0;
+  margin-bottom: 20px;
 
   &:hover > &__close {
     opacity: 1;
@@ -11,8 +12,8 @@
 
   &__close {
     transition: 0.2s all;
-    width: 11px;
-    height: 11px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     opacity: 0;
   }

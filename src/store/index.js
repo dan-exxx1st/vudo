@@ -6,7 +6,7 @@ export default createStore({
   },
   mutations: {
     setDialogs(state, payload) {
-      state.folders = payload.folders;
+      state.folders = payload;
     }
   },
   actions: {

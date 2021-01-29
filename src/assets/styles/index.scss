@@ -1,3 +1,18 @@
+/* Import mixins */
+@import './mixins.scss';
+
+/* Import views styles */
+@import './views/Home.scss';
+
+/* Import components styles */
+@import './components/AddButton.scss';
+@import './components/CheckBox.scss';
+@import './components/FolderItem.scss';
+@import './components/TodoItem.scss';
+@import './components/Folders.scss';
+@import './components/Todos.scss';
+
+/* Global css variables */
 :root {
   --color-white: #fafafa;
   --color-black: #0a0a0a;
@@ -5,13 +20,31 @@
   --color-light-grey: #e8e8e8;
   --color-grey: #b4b4b4;
   --color-dark-grey: #767676;
+  --color-light-blue: #f4f6f8;
 }
+
+/* Global styles */
 
 * {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-@import './components/AddButton.scss';
-@import './components/CheckBox.scss';
-@import './components/FolderItem.scss';
-@import './components/TodoItem.scss';
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-light-grey);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  width: 80vw;
+  height: 80vh;
+}
