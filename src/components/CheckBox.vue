@@ -17,7 +17,11 @@
 <script>
 export default {
   emits: ['changeChecked'],
-  props: ['text'],
+  props: {
+    text: {
+      type: String
+    }
+  },
 
   data() {
     return {

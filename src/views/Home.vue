@@ -1,31 +1,36 @@
 <template>
-  <div class="home">
+  <div class="page home">
+    <Folders :currentFolderId="currentFolderId" />
+    <div class="todos-wrapper">
+      <Todos
+        v-for="folder in getFolders"
+        :key="folder.id"
+        :folderId="folder.id"
+      />
+    </div>
     <!-- <radio-button @changeChecked="onChecked" text="Hello" /> -->
     <!-- <todo-folder-item /> -->
     <!-- <add-button text="Новая задача" variant="medium" />
     <add-button text="Добавить папку" variant="small" /> -->
-    <todo-item />
-    <ul>
-      <li v-for="folder in folders" :key="folder.id">
-        {{ folder.name }}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
 
-import TodoItem from '@/components/TodoItem.vue';
+import Folders from '@/components/Folders';
+import Todos from '@/components/Todos';
+
 export default {
-  created: async function() {
+  async created() {
     const response = await this.api.getAllFolders();
     this.setDialogs(response.data);
   },
   inject: ['api'],
   name: 'Home',
   components: {
-    TodoItem
+    Folders,
+    Todos
   },
   methods: {
     onChecked({ text }) {
@@ -34,7 +39,27 @@ export default {
     ...mapActions(['setDialogs'])
   },
   computed: {
-    ...mapState(['folders'])
+    ...mapState(['folders']),
+    currentFolderId: {
+      cache: false,
+      get() {
+        return this.$route.query.folder;
+      }
+    },
+    getFolders: {
+      get() {
+        const folderId = this.currentFolderId;
+        if (this.folders) {
+          if (folderId) {
+            return this.folders.filter(folder => folder.id === folderId);
+          } else {
+            return this.folders;
+          }
+        }
+
+        return [];
+      }
+    }
   }
 };
 </script>

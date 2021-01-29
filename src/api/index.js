@@ -8,7 +8,13 @@ export class Api {
   }
 
   async getAllFolders() {
-    const folders = await this.client.get('/folders');
-    return folders;
+    const response = await this.client.get('/folders');
+    return response.data;
+  }
+
+  async getTodosByFolderId(folderId) {
+    const response = await this.client.get(`/todos?folderId=${folderId}`);
+
+    return response.data.todos;
   }
 }
