@@ -12,6 +12,7 @@
 @import './components/Folders.scss';
 @import './components/Todos.scss';
 @import './components/AddTodo.scss';
+@import './components/AddFolder.scss';
 
 /* Global css variables */
 :root {
@@ -46,6 +47,6 @@ body {
 }
 
 .page {
-  width: 80vw;
+  width: 60vw;
   height: 80vh;
 }

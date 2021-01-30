@@ -2,9 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 470px;
-  padding: 10px 0;
+  max-width: 480px;
+  padding: 10px 10px 10px 0;
   margin-bottom: 20px;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: 10px 10px 25px var(--color-light-grey);
+  }
 
   &:hover > &__close {
     opacity: 1;

@@ -1,7 +1,12 @@
 <template>
   <div class="todo-item">
     <CheckBox @click="updateTodoChecked" :text="todo.text" :checked="isDone" />
-    <img class="todo-item__close" :src="closeIcon" alt="close" />
+    <img
+      class="todo-item__close"
+      :src="closeIcon"
+      alt="close"
+      @click="$emit('deleteTodo', todo.id)"
+    />
   </div>
 </template>
 
@@ -17,6 +22,9 @@ export default {
       default() {
         return {};
       }
+    },
+    deleteTodo: {
+      type: Function
     }
   },
   data() {

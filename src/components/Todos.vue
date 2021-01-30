@@ -5,7 +5,12 @@
       <img :src="pencil" alt="edit" />
     </div>
     <div class="todos__line"></div>
-    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <TodoItem
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+      @deleteTodo="deleteTodo"
+    />
     <Button
       v-if="!addTodo"
       icon
@@ -46,6 +51,20 @@ export default {
     },
     addNewTodo(todo) {
       this.todos.push(todo);
+    },
+    async deleteTodo(todoId) {
+      const result = await this.api.deleteTodo(todoId);
+      if (result) {
+        const todos = this.todos;
+        const todoIndex = todos.indexOf(
+          todos.find(todo => todo.id === result.id)
+        );
+        const newTodos = [
+          ...todos.slice(0, todoIndex),
+          ...todos.slice(todoIndex + 1)
+        ];
+        this.todos = newTodos;
+      }
     }
   },
   props: {

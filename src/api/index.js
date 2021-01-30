@@ -29,4 +29,15 @@ export class Api {
     const updatedTodo = response.data.todo;
     return updatedTodo;
   }
+
+  async deleteTodo(todoId) {
+    const response = await this.client.delete('/todo', {
+      data: {
+        todoId
+      }
+    });
+    if (response.status === 200) {
+      return response.data.todo;
+    }
+  }
 }
