@@ -1,10 +1,9 @@
 <template>
   <div class="add-todo">
-    <input
-      type="text"
-      class="add-todo__input"
+    <TextField
       placeholder="Текст задачи"
-      v-model="todoText"
+      :text="todoText"
+      @update:text="updateText"
     />
     <div class="add-todo__buttons">
       <Button text="Добавить задачу" variant="primary" @click="createTodo" />
@@ -15,6 +14,7 @@
 
 <script>
 import Button from './Button';
+import TextField from './TextField';
 export default {
   data() {
     return {
@@ -31,6 +31,9 @@ export default {
       this.addNewTodo(newTodo);
       this.todoText = '';
       this.cancel(false);
+    },
+    updateText(value) {
+      this.todoText = value;
     }
   },
   props: {
@@ -46,7 +49,8 @@ export default {
   },
   inject: ['api'],
   components: {
-    Button
+    Button,
+    TextField
   }
 };
 </script>
