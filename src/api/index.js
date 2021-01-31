@@ -18,6 +18,22 @@ export class Api {
     return response.data.todos;
   }
 
+  async createFolder(payload) {
+    const response = await this.client.post('/folder', payload);
+
+    return response.data.folder;
+  }
+
+  async deleteFolder(id) {
+    const response = await this.client.delete('/folder', {
+      data: {
+        id
+      }
+    });
+
+    return response.data.folder;
+  }
+
   async createTodo(payload) {
     const response = await this.client.post('/todo', payload);
     const newTodo = response.data.todo;

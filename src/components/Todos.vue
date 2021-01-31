@@ -1,7 +1,7 @@
 <template>
   <div class="todos">
     <div class="todos__title">
-      <h2>{{ folder.name }}</h2>
+      <h2 :style="{ color: `${folder.color}` }">{{ folder.name }}</h2>
       <img :src="pencil" alt="edit" />
     </div>
     <div class="todos__line"></div>

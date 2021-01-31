@@ -5,13 +5,33 @@ export default createStore({
     folders: []
   },
   mutations: {
-    setDialogs(state, payload) {
+    setFolders(state, payload) {
       state.folders = payload;
+    },
+    addFolder(state, payload) {
+      state.folders.push(payload);
+    },
+    deleteFolder(state, payload) {
+      const folders = state.folders;
+      const folderIndex = folders.indexOf(
+        folders.find(folder => folder.id === payload)
+      );
+      const newFolders = [
+        ...folders.slice(0, folderIndex),
+        ...folders.slice(folderIndex + 1)
+      ];
+      state.folders = newFolders;
     }
   },
   actions: {
-    setDialogs({ commit }, folders) {
-      commit('setDialogs', folders);
+    setFolders({ commit }, folders) {
+      commit('setFolders', folders);
+    },
+    addFolder({ commit }, folder) {
+      commit('addFolder', folder);
+    },
+    deleteFolder({ commit }, folderId) {
+      commit('deleteFolder', folderId);
     }
   },
   modules: {}
