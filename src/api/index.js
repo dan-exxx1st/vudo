@@ -24,6 +24,12 @@ export class Api {
     return response.data.folder;
   }
 
+  async updateFolderName(payload) {
+    const response = await this.client.put('/folder', payload);
+
+    return response.data.folder;
+  }
+
   async deleteFolder(id) {
     const response = await this.client.delete('/folder', {
       data: {
