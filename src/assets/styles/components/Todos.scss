@@ -1,10 +1,10 @@
 .todos-wrapper {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 75%;
   background: var(--color-white);
   overflow-y: scroll;
-  padding: 50px;
+  padding: 20px;
 }
 
 .todos {
@@ -17,7 +17,6 @@
       font-weight: bold;
       font-size: 32px;
       line-height: 39px;
-      color: #64c4ed;
 
       margin-right: 15px;
     }
@@ -31,29 +30,5 @@
     background: #f2f2f2;
     height: 2px;
     margin: 20px 0;
-  }
-
-  &__add {
-    outline: none;
-    background: none;
-    border: none;
-
-    display: flex;
-    align-items: center;
-
-    cursor: pointer;
-
-    & > img {
-      margin-right: 20px;
-    }
-
-    & > span {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
-      letter-spacing: 0.15px;
-
-      color: var(--color-grey);
-    }
   }
 }

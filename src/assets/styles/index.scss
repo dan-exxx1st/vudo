@@ -5,12 +5,16 @@
 @import './views/Home.scss';
 
 /* Import components styles */
-@import './components/AddButton.scss';
+@import './components/Button.scss';
 @import './components/CheckBox.scss';
 @import './components/FolderItem.scss';
 @import './components/TodoItem.scss';
 @import './components/Folders.scss';
 @import './components/Todos.scss';
+@import './components/AddTodo.scss';
+@import './components/AddFolder.scss';
+@import './components/TextField.scss';
+@import './components/ColorSelect.scss';
 
 /* Global css variables */
 :root {
@@ -36,6 +40,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: var(--color-light-grey);
+  overflow: hidden;
 }
 
 body {
@@ -45,6 +50,10 @@ body {
 }
 
 .page {
-  width: 80vw;
+  width: 60vw;
   height: 80vh;
+}
+
+.w100 {
+  width: 100%;
 }

@@ -1,23 +1,37 @@
 <template>
   <div class="todos">
     <div class="todos__title">
-      <h2>{{ folder.name }}</h2>
+      <h2 :style="{ color: `${folder.color}` }">{{ folder.name }}</h2>
       <img :src="pencil" alt="edit" />
     </div>
     <div class="todos__line"></div>
-    <TodoItem v-for="todo in todos" :key="todo.id" :text="todo.text" />
-    <div class="todos__add">
-      <img :src="add" alt="Add" />
-      <span>Новая задача</span>
-    </div>
+    <TodoItem
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+      @deleteTodo="deleteTodo"
+    />
+    <Button
+      v-if="!addTodo"
+      icon
+      text="Новая задача"
+      @click="handleAddTodoOpen"
+    />
+    <AddTodo
+      v-else
+      :cancel="handleAddTodoOpen"
+      :folderId="folder.id"
+      :addNewTodo="addNewTodo"
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import TodoItem from './TodoItem';
+import Button from './Button';
+import AddTodo from './AddTodo';
 import PencilIcon from '@/assets/icons/pencil.svg';
-import AddIcon from '@/assets/icons/add.svg';
 
 export default {
   async created() {
@@ -27,9 +41,31 @@ export default {
   data() {
     return {
       pencil: PencilIcon,
-      add: AddIcon,
-      todos: []
+      todos: [],
+      addTodo: false
     };
+  },
+  methods: {
+    handleAddTodoOpen() {
+      this.addTodo = !this.addTodo;
+    },
+    addNewTodo(todo) {
+      this.todos.push(todo);
+    },
+    async deleteTodo(todoId) {
+      const result = await this.api.deleteTodo(todoId);
+      if (result) {
+        const todos = this.todos;
+        const todoIndex = todos.indexOf(
+          todos.find(todo => todo.id === result.id)
+        );
+        const newTodos = [
+          ...todos.slice(0, todoIndex),
+          ...todos.slice(todoIndex + 1)
+        ];
+        this.todos = newTodos;
+      }
+    }
   },
   props: {
     folderId: {
@@ -44,7 +80,9 @@ export default {
   },
   inject: ['api'],
   components: {
-    TodoItem
+    TodoItem,
+    Button,
+    AddTodo
   }
 };
 </script>

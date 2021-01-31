@@ -1,0 +1,32 @@
+.add-folder {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 15px;
+  min-width: 200px;
+  bottom: 150px;
+
+  &__close {
+    top: -8px;
+    right: -8px;
+    position: absolute;
+    background: #5c5c5c;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    &__icon {
+      width: 8px;
+    }
+  }
+
+  &__colors {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

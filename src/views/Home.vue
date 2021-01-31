@@ -24,7 +24,7 @@ import Todos from '@/components/Todos';
 export default {
   async created() {
     const response = await this.api.getAllFolders();
-    this.setDialogs(response.data);
+    this.setFolders(response.data);
   },
   inject: ['api'],
   name: 'Home',
@@ -33,10 +33,7 @@ export default {
     Todos
   },
   methods: {
-    onChecked({ text }) {
-      console.log(text);
-    },
-    ...mapActions(['setDialogs'])
+    ...mapActions(['setFolders'])
   },
   computed: {
     ...mapState(['folders']),
