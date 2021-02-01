@@ -1,7 +1,7 @@
 .folders {
   width: 25%;
   background: var(--color-light-blue);
-  padding-left: 20px;
+  padding: 20px;
 
   &__title {
     font-style: normal;
@@ -12,7 +12,6 @@
     color: var(--color-black);
     cursor: pointer;
 
-    margin: 20px 0;
     display: flex;
     align-items: center;
 
@@ -31,11 +30,33 @@
   }
 
   &__list {
+    margin-top: 20px;
     max-height: 60%;
     overflow-y: scroll;
   }
 
   &__add-btn {
-    margin: 10px 0 20px -4px;
+    margin: 10px 0 20px 2px;
+  }
+}
+
+@media (max-width: 800px) and (min-width: 640px) {
+  .folders {
+    width: 35%;
+
+    &__title {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .folders {
+    width: 40%;
+    padding: 5px;
+
+    &__title {
+      font-size: 14px;
+    }
   }
 }

@@ -49,3 +49,24 @@
     display: block;
   }
 }
+
+@media (max-width: 800px) and(min-width:640px) {
+  .todo-folder {
+    &__description {
+      &__text {
+        margin-left: 5px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .todo-folder {
+    &__description {
+      &__text {
+        font-size: 12px;
+      }
+    }
+  }
+}

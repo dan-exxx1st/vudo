@@ -41,7 +41,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: var(--color-light-grey);
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 body {
@@ -57,4 +57,23 @@ body {
 
 .w100 {
   width: 100%;
+}
+
+@media (max-width: 1536px) and (min-width: 1366px) {
+  .page {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 1080px) {
+  .page {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 1080px) {
+  .page {
+    width: 99vw;
+    height: 99vh;
+  }
 }

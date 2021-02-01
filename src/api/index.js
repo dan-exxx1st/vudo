@@ -3,7 +3,10 @@ import axios from 'axios';
 export class Api {
   constructor() {
     this.client = axios.create({
-      baseURL: 'http://localhost:8080/api'
+      baseURL:
+        process.env.NODE_ENV === 'production'
+          ? 'https://vudo-backend.herokuapp.com/api'
+          : 'http://192.168.1.4:8080/api'
     });
   }
 

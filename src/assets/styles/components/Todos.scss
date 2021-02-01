@@ -32,3 +32,43 @@
     margin: 20px 0;
   }
 }
+
+@media (max-width: 800px) and(min-width:640px) {
+  .todos-wrapper {
+    width: 65%;
+  }
+
+  .todos {
+    &__title {
+      & > h2 {
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .todos-wrapper {
+    width: 60%;
+    padding: 5px;
+  }
+
+  .todos {
+    &__title {
+      & > h2 {
+        font-size: 24px;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .todos {
+    &__title {
+      & > h2 {
+        font-size: 18px;
+      }
+    }
+  }
+}
