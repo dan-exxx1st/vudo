@@ -9,7 +9,7 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "production": "serve -p ${PORT:=4000} dist",
-    "heroku-prebuild": "npm run -g serve"
+    "heroku-prebuild": "npm i -g serve"
   },
   "dependencies": {
     "axios": "^0.21.1",
