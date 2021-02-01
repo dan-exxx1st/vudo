@@ -1,0 +1,48 @@
+.update-folder {
+  display: flex;
+  align-items: center;
+
+  &__field {
+    min-width: 10px;
+    font-weight: bold;
+    font-size: 32px;
+    border-bottom: 1px solid var(--color-black);
+  }
+
+  &__accept {
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--color-light-green);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      background: rgb(244, 244, 244);
+    }
+  }
+}
+
+@media (max-width: 800px) and(min-width:640px) {
+  .update-folder {
+    &__field {
+      font-size: 26px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .update-folder {
+    &__field {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .update-folder {
+    &__field {
+      font-size: 18px;
+    }
+  }
+}

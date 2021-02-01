@@ -8,10 +8,6 @@
         :folderId="folder.id"
       />
     </div>
-    <!-- <radio-button @changeChecked="onChecked" text="Hello" /> -->
-    <!-- <todo-folder-item /> -->
-    <!-- <add-button text="Новая задача" variant="medium" />
-    <add-button text="Добавить папку" variant="small" /> -->
   </div>
 </template>
 

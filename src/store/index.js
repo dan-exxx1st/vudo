@@ -21,6 +21,19 @@ export default createStore({
         ...folders.slice(folderIndex + 1)
       ];
       state.folders = newFolders;
+    },
+    updateFolder(state, payload) {
+      const folders = state.folders;
+      const { id } = payload;
+      const folderIndex = folders.indexOf(
+        folders.find(folder => folder.id === id)
+      );
+      const newFolders = [
+        ...folders.slice(0, folderIndex),
+        { ...payload },
+        ...folders.slice(folderIndex + 1)
+      ];
+      state.folders = newFolders;
     }
   },
   actions: {
@@ -32,6 +45,9 @@ export default createStore({
     },
     deleteFolder({ commit }, folderId) {
       commit('deleteFolder', folderId);
+    },
+    updateFolder({ commit }, updatedFolder) {
+      commit('updateFolder', updatedFolder);
     }
   },
   modules: {}

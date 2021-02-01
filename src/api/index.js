@@ -3,7 +3,10 @@ import axios from 'axios';
 export class Api {
   constructor() {
     this.client = axios.create({
-      baseURL: 'http://localhost:8080/api'
+      baseURL:
+        process.env.NODE_ENV === 'production'
+          ? 'https://vudo-backend.herokuapp.com/api'
+          : 'http://192.168.1.4:8080/api'
     });
   }
 
@@ -20,6 +23,12 @@ export class Api {
 
   async createFolder(payload) {
     const response = await this.client.post('/folder', payload);
+
+    return response.data.folder;
+  }
+
+  async updateFolderName(payload) {
+    const response = await this.client.put('/folder', payload);
 
     return response.data.folder;
   }

@@ -1,9 +1,16 @@
 <template>
   <div class="todos">
-    <div class="todos__title">
+    <UpdateFolder
+      :color="folder.color"
+      :folder="folder"
+      v-if="updateTodo"
+      @close="updateTodo = false"
+    />
+    <div class="todos__title" v-else>
       <h2 :style="{ color: `${folder.color}` }">{{ folder.name }}</h2>
-      <img :src="pencil" alt="edit" />
+      <img :src="pencil" alt="edit" @click="updateTodo = true" />
     </div>
+
     <div class="todos__line"></div>
     <TodoItem
       v-for="todo in todos"
@@ -31,6 +38,7 @@ import { mapState } from 'vuex';
 import TodoItem from './TodoItem';
 import Button from './Button';
 import AddTodo from './AddTodo';
+import UpdateFolder from './UpdateFolder';
 import PencilIcon from '@/assets/icons/pencil.svg';
 
 export default {
@@ -42,7 +50,8 @@ export default {
     return {
       pencil: PencilIcon,
       todos: [],
-      addTodo: false
+      addTodo: false,
+      updateTodo: false
     };
   },
   methods: {
@@ -82,7 +91,8 @@ export default {
   components: {
     TodoItem,
     Button,
-    AddTodo
+    AddTodo,
+    UpdateFolder
   }
 };
 </script>

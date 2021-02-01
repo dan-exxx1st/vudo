@@ -60,12 +60,16 @@ export default {
       this.$emit('close');
     },
     async createFolder() {
-      const folder = await this.api.createFolder({
-        name: this.folderName,
-        color: this.currentSelect
-      });
-      this.addFolder(folder);
-      this.closeIcon();
+      if (this.folderName.length > 0) {
+        const folder = await this.api.createFolder({
+          name: this.folderName,
+          color: this.currentSelect
+        });
+        this.addFolder(folder);
+        this.closeIcon();
+      } else {
+        alert('Folder name lenght must be than 0');
+      }
     },
     ...mapActions(['addFolder'])
   },
